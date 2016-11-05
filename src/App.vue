@@ -9,7 +9,7 @@
     </vk-button-radio>
 
     <div id="inputarea">
-      <input v-model="key" placeholder="Enter your Key"></input><br>
+      <input v-model="key" v-on:keyup="vigenere" placeholder="Enter your Key"></input><br>
       <textarea v-model="message" v-on:keyup="vigenere" placeholder="Enter your Message"></textarea>
       <br>
       <h4>Output:</h4>
@@ -47,6 +47,9 @@ export default {
           keyindex += 1;
           if (keyindex === this.key.length) {
             keyindex = 0;
+          }
+          if (output.length % 6 == 0) {
+            output += ' '
           }
           if (alphabet.charAt(num) != undefined) {
             output += alphabet.charAt(num);
